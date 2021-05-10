@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace TP6_GRUPO4.Clases
 {
     public class AccesoDatos
     {
-        string RutaBD = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
+        String RutaBD = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
 
         public AccesoDatos()
         {
@@ -23,7 +24,7 @@ namespace TP6_GRUPO4.Clases
                 cn.Open();
                 return cn;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -38,13 +39,13 @@ namespace TP6_GRUPO4.Clases
                 adap = new SqlDataAdapter(consulta, ObtenerConexion());
                 return adap;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
         }
 
-        public int EjecutarAlmacenamiento(SqlCommand comando, string nombrePA)
+        public int EjecutarAlmacenamiento(SqlCommand comando, String nombrePA)
         {
             int filasCambiadas;
 
@@ -56,7 +57,7 @@ namespace TP6_GRUPO4.Clases
 
             cmd.Connection = cn;
 
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.CommandText = nombrePA;
 

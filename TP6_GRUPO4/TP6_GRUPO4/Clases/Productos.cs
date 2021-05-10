@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace TP6_GRUPO4.Clases
 {
     public class Productos
     {
         private int i_IdProducto;
-        private string s_NombreProducto;
-        private string s_CantidadPorUnidad;
+        private String s_NombreProducto;
+        private String s_CantidadPorUnidad;
         private decimal d_PrecioUnidad;
 
         public Productos()
         {
         }
 
-        public Productos(int i_IdProducto, string s_NombreProducto, string s_CantidadPorUnidad, decimal d_PrecioUnidad)
+        public Productos(int i_IdProducto, String s_NombreProducto, String s_CantidadPorUnidad, decimal d_PrecioUnidad)
         {
             this.i_IdProducto = i_IdProducto;
             this.s_NombreProducto = s_NombreProducto;
@@ -30,13 +32,13 @@ namespace TP6_GRUPO4.Clases
             set { i_IdProducto = value; }
         }
 
-        public string NombreProducto
+        public String NombreProducto
         {
             get { return s_NombreProducto; }
             set { s_NombreProducto = value; }
         }
 
-        public string CantidadUnidad
+        public String CantidadUnidad
         {
             get { return s_CantidadPorUnidad; }
             set { s_CantidadPorUnidad = value; }

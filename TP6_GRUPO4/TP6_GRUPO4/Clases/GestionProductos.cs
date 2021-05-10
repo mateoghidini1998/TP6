@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace TP6_GRUPO4.Clases
 {
     public class GestionProductos
     {
         public GestionProductos()
-        { }
+        { 
+        
+        }
 
-        private DataTable ObtenerTabla(String nombre, string sql)
+        private DataTable ObtenerTabla(String nombre, string Sql)
         {
             DataSet ds = new DataSet();
             AccesoDatos ad = new AccesoDatos();
-            SqlDataAdapter adap = ad.ObtenerAdaptador(sql);
+            SqlDataAdapter adap = ad.ObtenerAdaptador(Sql);
             adap.Fill(ds, nombre);
             return ds.Tables[nombre];
         }
@@ -54,6 +56,7 @@ namespace TP6_GRUPO4.Clases
             ArmarParametrosProductos(ref cmd, prod);
             AccesoDatos ad = new AccesoDatos();
             int FilasCambiadas = ad.EjecutarAlmacenamiento(cmd, "Actualizar_Fila");
+
             if(FilasCambiadas == 1)
             {
                 return true;
@@ -67,9 +70,10 @@ namespace TP6_GRUPO4.Clases
         public bool EliminarProducto(Productos prod)
         {
             SqlCommand cmd = new SqlCommand();
-            ArmarParametrosProductos(ref cmd, prod);
+            ArmarParametrosProductosEliminar(ref cmd, prod);
             AccesoDatos ad = new AccesoDatos();
             int FilasCambiadas = ad.EjecutarAlmacenamiento(cmd, "Eliminar_Fila");
+
             if (FilasCambiadas == 1)
             {
                 return true;
